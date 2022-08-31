@@ -1,0 +1,58 @@
+﻿@model IEnumerable<DOMIN_MVC.Models.Receipt>
+
+@{
+    ViewData["Title"] = "GetMyOrders";
+    Layout = "_LayoutC";
+}
+
+<h1>My Orders</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ReceiptDate)
+            </th>
+          @*  <th>
+                @Html.DisplayNameFor(model => model.customer)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.pizza)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UnitPrice)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ReceiptDate)
+            </td>
+           @* <td>
+                @Html.DisplayFor(modelItem => item.customer.CustomerID)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.pizza.PizzaName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+            <td>
+              @*  <a asp-action="Edit" asp-route-id="@item.ReceiptID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ReceiptID">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ReceiptID">Delete</a>*@
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

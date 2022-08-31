@@ -1,0 +1,122 @@
+﻿@model IEnumerable<DOMIN_MVC.Models.Pizza>
+@*@model IEnumerable<DOMIN_MVC.Models.Cart>*@
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    ViewBag.Customer = @HttpContextAccessor.HttpContext.Session.GetString("Customer");
+}
+@if (ViewBag.Customer != null)
+{
+    //Customer View
+
+    {
+        ViewData["Title"] = "Get";
+        Layout = "_LayoutC";
+    }
+
+    <h1>Menu</h1>
+
+   @* <p>
+        <a asp-action="Add">Create New</a>
+    </p>*@
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PizzaID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PizzaName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Stock)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PizzaID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PizzaName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Stock)
+                    </td>
+                    <td>
+                       @* <a asp-controller="Service" asp-action="AddToCart" asp-route-id="@item.PizzaID" >Add to Cart</a> *@
+                        <a asp-action="GetById" asp-route-id="@item.PizzaID">Order</a> 
+                       @* <a asp-action="Delete" asp-route-id="@item.PizzaID">Delete</a>*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    //Admin View
+    {
+        ViewData["Title"] = "Get";
+        Layout = "_LayoutA";
+    }
+
+    <h1>Menu</h1>
+
+    <p>
+        <a asp-action="Add">Stock Update</a>
+    </p>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.PizzaID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PizzaName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Stock)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PizzaID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PizzaName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Stock)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.PizzaID">Edit</a> |
+                        <a asp-action="Delete" asp-route-id="@item.PizzaID">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

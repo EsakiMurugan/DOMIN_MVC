@@ -1,0 +1,35 @@
+﻿@model DOMIN_MVC.Models.Payment
+@inject IHttpContextAccessor HttpContextAccessor
+
+@{
+    ViewData["Title"] = "Pay";
+    ViewBag.TotalPrice = @HttpContextAccessor.HttpContext.Session.GetInt32("TotalPrice");
+
+}
+
+<h1>Pay</h1>
+
+<h4>Payment</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Pay">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CardNumber" class="control-label"></label>
+                <input asp-for="CardNumber" class="form-control" />
+                <span asp-validation-for="CardNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="TotalAmount" class="control-label"></label>
+                <input asp-for="TotalAmount" class="form-control" value="@ViewBag.TotalPrice" disabled/>
+                <span asp-validation-for="TotalAmount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Pay" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+

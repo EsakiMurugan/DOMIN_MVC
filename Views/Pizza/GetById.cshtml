@@ -1,0 +1,42 @@
+﻿@model DOMIN_MVC.Models.Pizza
+
+@{
+    ViewData["Title"] = "GetById";
+    Layout = "_LayoutC";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Pizza</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PizzaID)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PizzaID)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.PizzaName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.PizzaName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Stock)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Stock)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-controller="Service" asp-action="AddToCart" asp-route-id="@Model.PizzaID" >Add to Cart</a> 
+</div>

@@ -1,0 +1,66 @@
+﻿@model IEnumerable<DOMIN_MVC.Models.Cart>
+
+@{
+    ViewData["Title"] = "GetMyCart";
+    Layout = "_LayoutC";
+}
+
+<h1>My Cart</h1>
+
+<a asp-controller="Payment" asp-action="Pay">Buy</a> 
+
+
+<table class="table">
+    <thead>
+        <tr>
+           @* <th>
+                @Html.DisplayNameFor(model => model.CartTypeID)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.pizza.PizzaName)
+            </th>
+             <th>
+                @Html.DisplayNameFor(model => model.pizza.Price)
+            </th>
+          @*  <th>
+                @Html.DisplayNameFor(model => model.customer)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UnitPrice)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.CartTypeID)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.pizza.PizzaName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.pizza.Price)
+            </td>
+           @* <td>
+                @Html.DisplayFor(modelItem => item.customer.CustomerID)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitPrice)
+            </td>
+            <td>
+                <a asp-action="EditCart" asp-route-id="@item.CartID">Edit</a> |
+                <a asp-action="DeleteCart" asp-route-id="@item.CartID">Delete</a> 
+               
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

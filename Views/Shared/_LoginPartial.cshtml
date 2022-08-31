@@ -1,0 +1,32 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@inject IHttpContextAccessor HttpContextAccessor
+
+
+<ul class="navbar-nav">
+   
+
+ <div class="dropdown">
+  <button class="btn btn-block dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+    Customer
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <li><a class="dropdown-item" href="Credential/CustomerLogin">Login</a></li>
+    <li><a class="dropdown-item" href="Credential/CustomerRegn">Register</a></li>
+  </ul>
+</div>
+
+<div class="dropdown">
+  <button class="btn btn-block dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+    Admin
+  </button>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <li><a class="dropdown-item" href="Credential/AdminLogin">Login</a></li>
+  </ul>
+</div>
+
+</ul>
+
+
+   

@@ -1,0 +1,47 @@
+﻿
+@{
+    Layout = "_LayoutC";
+}
+<h4>Thanks for your purchase!</h4>
+<h3> Your Orders shown below will deliver soon </h3>
+<p>
+
+</p>
+<table style="width:50%">
+    <tr>
+        <td>Name</td>
+        <td>Unit Price</td>
+        <td>Quantity purchased</td>
+    </tr>
+    <tr>
+        <td>
+            @foreach (var item in @ViewBag.Collection)
+            {
+                <h5>@Html.Raw(item)</h5>
+            }
+        </td>
+       <td>
+            @foreach (var item in @ViewBag.Collection1)
+            {
+                <h5>@Html.Raw(item)</h5>
+            }
+        </td>
+        <td>
+            @foreach (var item in @ViewBag.Collection2)
+            {
+                <h5>@Html.Raw(item)</h5>
+            }
+        </td>
+    </tr>
+</table>
+
+<br/>
+
+<h5>Total Amount = @ViewBag.TA</h5>
+<p>
+
+</p>
+@*<div>
+    <a asp-controller="Pizza" asp-action="Get">Back to List</a>
+</div>
+*@
