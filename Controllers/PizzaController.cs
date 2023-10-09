@@ -52,10 +52,12 @@ namespace DOMIN_MVC.Controllers
             }
             return View(pizza);
         }
+
         public IActionResult Add()
         {
             return View();
         }
+
         [HttpPost]
         public async Task<IActionResult> Add(Pizza pizza)
         {
